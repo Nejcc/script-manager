@@ -1,138 +1,96 @@
-Script Manager
-The Script Manager is a Bash-based utility that helps manage, organize, and execute shell scripts with ease. It provides features like script creation, metadata handling, log management, backups, and more, all accessible through a user-friendly dialog-based interface.
 
-Features
-Create Scripts: Generate new scripts using a blank template or predefined templates.
-View and Edit: Easily view or edit existing scripts.
-Execute Scripts: Run scripts with logging, and handle root access if required.
-Backup Scripts: Automatically create backups when editing scripts.
-Search Scripts: Search scripts by name, description, or author metadata.
-View by Category: Organize and filter scripts by categories (e.g., Backup, Setup, Utilities).
-Schedule Scripts: Schedule scripts for periodic execution using cron.
-Export Metadata: Export script metadata (name, version, description, etc.) to a JSON file for documentation.
-Delete Old Logs: Clean up old logs by specifying an age threshold.
-Help and Features: Built-in help menu and feature list.
-Requirements
-Operating System: Linux-based OS with Bash.
-Dependencies:
-dialog package (automatically installed if missing).
-Setup
-Clone the repository or copy the script to your desired location:
+# Script Manager
 
-bash
-Copy code
-git clone https://github.com/your-repo/script-manager.git
-cd script-manager
-Ensure the script is executable:
+A comprehensive, user-friendly **Bash Script Manager** that allows you to create, manage, execute, and schedule scripts with ease. This project is designed to enhance productivity and streamline the workflow for managing shell scripts.
 
-bash
-Copy code
-chmod +x script_manager.sh
-Run the script:
+---
 
-bash
-Copy code
-./script_manager.sh
-Directory Structure
-The script manager automatically sets up the following directories:
+## Features
 
-./src: Stores all your scripts.
-./logs: Logs generated during script execution.
-./backup: Backups of edited scripts.
-./templates (optional): Templates for new scripts.
+- **Create Scripts**: Use blank or predefined templates to create scripts effortlessly.
+- **Search Scripts**: Quickly search by name, description, or author.
+- **Execute Scripts**: Run scripts with optional logging and timeout functionality.
+- **Duplicate Scripts**: Make copies of existing scripts.
+- **View Metadata**: Check details like name, description, author, version, and more.
+- **Assign Categories**: Organize scripts into categories for better management.
+- **Schedule Scripts**: Set up cron jobs to automate execution.
+- **Export Metadata**: Export all script details to a JSON file for documentation or analysis.
+- **Delete Old Logs**: Clean up outdated logs to save space.
+- **Setup Wizard**: Configure directories and settings via an interactive wizard.
 
-Metadata Structure
-Scripts are expected to include metadata in the following format:
+---
 
-bash
-Copy code
-# Name: Example Script
-# Description: This script does something useful.
-# Version: 1.0.0
-# Author: Your Name
-# Last Updated: YYYY-MM-DD
-#root: false
-This metadata is used for display, search, and export functionalities.
+## Requirements
 
-Main Menu Options
-Create a New Script: Start with a blank template or choose a predefined one.
-Search Scripts: Search for scripts by name, description, or author metadata.
-View Scripts by Category: List scripts based on predefined categories (e.g., Backup, Setup, Utilities).
-Export Metadata: Save all script metadata to a JSON file.
-Delete Old Logs: Remove logs older than a specified number of days.
-Show Features: View the complete list of features.
-Help: View detailed help instructions.
-Example Usage
-Create a New Script:
+- **Bash**: Ensure your system supports Bash scripts.
+- **Dialog**: Install `dialog` for interactive CLI menus.
+  ```bash
+  sudo pacman -S --noconfirm dialog
+  ```
 
-Select the "Create New Script" option from the menu.
-Choose between a blank or predefined template.
-Provide a name and start coding!
-Search Scripts:
+---
 
-Enter a keyword to search in script names, descriptions, or authors.
-Select a script from the results to manage it.
-Execute a Script:
+## Installation
 
-Select a script and choose the "Execute Script" option.
-Logs will be saved in the ./logs directory.
-Schedule a Script:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/script-manager.git
+   cd script-manager
+   ```
 
-Set up a cron schedule for periodic execution (e.g., 0 17 * * * for 5 PM daily).
-Delete Old Logs:
+2. Make the main script executable:
+   ```bash
+   chmod +x script_manager.sh
+   ```
 
-Specify the age threshold (e.g., 30 days) to remove outdated logs.
-Configuration
-Change Directories
-You can configure the directories for storing scripts and logs by editing the following variables in the script:
+3. Run the script:
+   ```bash
+   ./script_manager.sh
+   ```
 
-bash
-Copy code
-SCRIPT_DIR="./src"
-LOG_DIR="./logs"
-BACKUP_DIR="./backup"
-Alternatively, use the Setup Wizard to set custom directories from the menu.
+---
 
-Exported Metadata Example
-When exporting metadata, the generated JSON file (script_metadata.json) will look like this:
+## Usage
 
-json
-Copy code
-[
-    {
-        "name": "Example Script",
-        "description": "This script does something useful.",
-        "version": "1.0.0",
-        "author": "Your Name",
-        "last_updated": "2025-01-08",
-        "requires_root": "false"
-    }
-]
-Future Improvements
-Integration with external version control systems like git.
-Advanced analytics for script execution performance.
-Enhanced template management with interactive previews.
-Troubleshooting
-dialog not found
-If the dialog package is not installed, the script will attempt to install it automatically. If it fails, you can manually install it using:
+1. **Main Menu**:
+   - Select from options like creating new scripts, searching, exporting metadata, and more.
 
-bash
-Copy code
-sudo pacman -S dialog    # For Arch-based distros
-sudo apt install dialog  # For Debian-based distros
-Permission Denied
-Ensure the script has execute permissions:
+2. **Script Management**:
+   - View, edit, execute, duplicate, schedule, or delete a selected script.
 
-bash
-Copy code
-chmod +x script_manager.sh
-Logs Not Generated
-Ensure the ./logs directory exists and has write permissions:
+3. **Setup Wizard**:
+   - Configure directories for scripts and logs via the setup wizard.
 
-bash
-Copy code
-mkdir -p ./logs
-chmod -R 755 ./logs
-License
-This project is licensed under the MIT License. Feel free to use, modify, and distribute it as needed.
+---
 
+## File Structure
+
+```
+.
+├── src/                # Directory for storing your scripts
+├── logs/               # Directory for storing log files
+├── templates/          # Directory for predefined script templates
+├── backup/             # Directory for backup files
+├── script_manager.sh   # Main script
+├── script_metadata.json # Exported metadata
+├── README.md           # Documentation
+└── .gitignore          # Git ignore rules
+```
+
+---
+
+## Contribution
+
+Contributions are welcome! If you have ideas or improvements, please open an issue or submit a pull request.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for more details.
+
+---
+
+## Support
+
+For any questions or support, please contact [info@after.si](mailto:info@after.si).
