@@ -485,6 +485,41 @@ EOL
 }
 
 
+validate_script_name() {
+    local script_name="$1"
+    if [[ ! "$script_name" =~ ^[a-zA-Z0-9_-]+$ ]]; then
+        dialog --msgbox "Invalid script name. Use only letters, numbers, underscores, and hyphens." 6 50
+        return 1
+    fi
+    return 0
+}
+
+
+setup_wizard() {
+    dialog --msgbox "Welcome to the Script Manager Setup Wizard!" 6 50
+
+    SCRIPT_DIR=$(dialog --inputbox "Enter the directory for storing scripts:" 10 50 "$SCRIPT_DIR" 2>&1 >/dev/tty)
+    LOG_DIR=$(dialog --inputbox "Enter the directory for storing logs:" 10 50 "$LOG_DIR" 2>&1 >/dev/tty)
+
+    mkdir -p "$SCRIPT_DIR" "$LOG_DIR"
+    dialog --msgbox "Setup completed. Directories created!" 6 50
+}
+
+
+show_features() {
+    local features=(
+        "Create new scripts with templates"
+        "View, edit, execute, duplicate, and delete scripts"
+        "Search for scripts by metadata"
+        "Export metadata to JSON"
+        "Delete old logs"
+        "Assign categories to scripts"
+        "Schedule script execution with cron"
+        "Structured logging and error handling"
+    )
+    dialog --msgbox "$(printf "%s\n" "${features[@]}")" 15 60
+}
+
 
 
 # View metadata of a script

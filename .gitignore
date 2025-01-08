@@ -1,0 +1,33 @@
+# Ignore logs directory
+logs/
+*.log
+
+# Ignore backups
+backup/
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Ignore metadata export files
+script_metadata.json
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore compiled binaries
+*.out
+*.exe
+
+# Ignore templates (if you want to manage them locally)
+templates/
+
+# Ignore custom configurations (if any)
+*.conf
+.env
+
+# Ignore the script itself during updates
+script_manager.sh.bak
