@@ -124,7 +124,7 @@ Features:
 Template Directory:
 Place your templates in the './templates' folder. Templates are used as the base for new scripts.
 
-Enjoy your organized and efficient script management!" 15 60
+Enjoy your organized and efficient script management!" 35 80
     main_menu
 }
 
